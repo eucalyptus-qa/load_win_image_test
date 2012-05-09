@@ -49,8 +49,8 @@ function setup_euca2ools {
 	    dir="../../$dir"
         fi
         echo "EUCA2OOLS DIR: $dir"
-        export PYTHONPATH=$dir/boto:$dir/euca2ools-main
-        export PATH=$dir/euca2ools-main/bin:$PATH
+        export PYTHONPATH=$dir/boto:$dir/euca2ools-2.0
+        export PATH=$dir/euca2ools-2.0/bin:$PATH
         echo "EUCA2OOLS VERSION: $(euca-version)"
 }
 
