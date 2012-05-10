@@ -49,7 +49,19 @@ if [ -z "$clcaddr" ]; then
       exit -1
 fi
 
-imgurl="http://dmirror/windows_images"
+###	ADDED by KYO		051012
+mymirror=$(wget -O - http://192.168.51.150/euca-qa/helper/lmap/which_proxy.php?MYIP=$clcadd 2> /dev/null)
+
+echo "LOCAL MIRROR API Returned: $mymirror"
+
+if (echo "$mymirror" | grep "192\.168\."); then
+        echo "USING LOCAL PROXY MIRROR: $mymirror"
+else
+	mymirror=192.168.7.65
+    	echo "USING DEFAULT MIRROR: $mymirror"
+fi
+
+imgurl="http://$mymirror/windows_images"
 IFS=$'\n'
 num_imgs=0
 for img in $(cat ../input/2b_tested.lst | grep IMG_FILE | cut -f2 -d '=' | sed 's/[ \r]//g'); do imgs[((num_imgs++))]="$imgurl/$img"; done
