@@ -50,7 +50,7 @@ if [ -z "$clcaddr" ]; then
 fi
 
 ###	ADDED by KYO		051012
-mymirror=$(wget -O - http://192.168.51.150/euca-qa/helper/lmap/which_proxy.php?MYIP=$clcadd 2> /dev/null)
+mymirror=$(wget -O - http://192.168.51.150/euca-qa/helper/lmap/which_proxy.php?MYIP=$clcaddr 2> /dev/null)
 
 echo "LOCAL MIRROR API Returned: $mymirror"
 
