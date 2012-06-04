@@ -156,12 +156,8 @@ function run_at {
 } 
 
 function describe_hypervisor {
-	if cat ../input/2b_tested.lst | grep "NC00" | grep MAVERICK > /dev/null; then
+	if cat ../input/2b_tested.lst | grep "NC00" | grep UBUNTU > /dev/null; then
        	      hypervisor="kvm";
-	elif cat ../input/2b_tested.lst | grep "NC00" | grep LUCID > /dev/null; then
-              hypervisor="kvm";
-	elif cat ../input/2b_tested.lst | grep "NC00" | grep KARMIC > /dev/null; then
-              hypervisor="kvm";
 	elif  cat ../input/2b_tested.lst | grep "NC00" | grep CENTOS > /dev/null; then
             if cat ../input/2b_tested.lst | grep "NC00" | grep "6\.[0-9]*" > /dev/null; then
                 hypervisor="kvm";
