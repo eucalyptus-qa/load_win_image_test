@@ -142,6 +142,18 @@ for imgurl in "${imgs[@]}"; do
         sleep 30	
         wait_for_unbundle $bucket $imgsize;
 done
+
+### ADDED BY KYO	103112
+echo ""
+echo ""
+echo "SCAN FOR WINDOWS EMI"
+myemi=$(euca-describe-images | grep emi | grep win | awk '{print $2}')
+echo "EMI: $myemi"
+echo "euca-modify-image-attribute $myemi --launch-permission --add all"
+euca-modify-image-attribute $myemi --launch-permission --add all
+echo "MADE EMI: $myemi TO BE PUBLIC IMAGE"
+echo ""
+
 echo "Image registration complete"
 exit 0
 
